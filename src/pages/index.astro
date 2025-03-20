@@ -1,11 +1,53 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const books = await getCollection("books");
+export const prerender = true;
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Probando Astro 5">
+  <main>
+    <div class="mb-24 flex w-full flex-col items-center">
+      <h1 class="text-center text-5xl font-bold">Coleccion de Libros</h1>
+      <p>By Astro 5, Daniel Dussan</p>
+    </div>
+    <section aria-label="Libros para programadores">
+      <div class="mx-auto max-w-screen-xl px-4">
+        <div class="grid justify-center gap-6 md:grid-cols-2">
+          {
+            books.map((book) => {
+              const { slug, data } = book;
+              const { title, author, description, img, readtime, buy } = data;
+              return (
+                <article class="flex">
+                  <a
+                    href={`/libro/${slug}`}
+                    class="mb-2 transition hover:scale-110 xl:mb-0"
+                  >
+                    <img
+                      transition:name={`image-${slug}`}
+                      src={`/${img}`}
+                      alt={title}
+                      class="mr-5 w-48 rounded aspect-[4/5.5]"
+                    />
+                  </a>
+                  <div class="flex flex-col justify-center">
+                    <h2
+                      class="mb-2 text-2xl leading-tight font-bold text-white"
+                      transition:name={`title-${slug}`}
+                    >
+                      {title}
+                    </h2>
+                    <p class="mb-4 max-w-sm text-gray-300">{description}</p>
+                    <span class="text-xs">Lectura en {readtime} minutos</span>
+                  </div>
+                </article>
+              );
+            })
+          }
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>

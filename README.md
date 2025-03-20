@@ -1,16 +1,8 @@
-# Astro Starter Kit: Basics
+# Astro Project
 
-```sh
-bun create astro@latest -- --template basics
-```
+Welcome to the Astro project!
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This project was created using Astro, a modern static site generator.
 
 ## 🚀 Project Structure
 
@@ -19,30 +11,45 @@ Inside of your Astro project, you'll see the following folders and files:
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   └── favicon.svg         # Default favicon
 ├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/            # Images, icons, and other assets
+│   ├── components/        # Reusable Astro components
+│   ├── layouts/           # Page layouts
+│   ├── pages/             # Pages and routing
+│   └── styles/            # Global styles
+├── astro.config.mjs       # Astro configuration file
+├── package.json           # Project dependencies and scripts
+├── tsconfig.json          # TypeScript configuration
+└── README.md              # Project documentation (this file)
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- `public/`:  Static assets that are served directly.
+- `src/components/`: Reusable UI components written in Astro or other frameworks.
+- `src/layouts/`: Page layout components to maintain a consistent structure.
+- `src/pages/`:  Astro pages that define routes and content.
+- `src/styles/`: Global CSS styles for the project.
+- `astro.config.mjs`: Configuration file for Astro settings and integrations.
+- `package.json`:  npm package file for managing dependencies and scripts.
+- `tsconfig.json`: TypeScript configuration file.
+- `README.md`:  Project documentation.
+
+To learn more about Astro project structure, see the [Astro documentation](https://docs.astro.build/en/basics/project-structure/).
 
 ## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project, in the terminal.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+| Command             | Action                                      |
+| :------------------ | :------------------------------------------ |
+| `bun install`       | Install project dependencies                |
+| `bun dev`           | Start the development server                |
+| `bun build`         | Build the production-ready site             |
+| `bun preview`       | Preview the built site locally               |
+| `bun astro ...`     | Use Astro CLI for various tasks             |
+| `bun astro --help`  | Get help with Astro CLI commands            |
 
-## 👀 Want to learn more?
+## 👀 Learn More
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Astro Documentation](https://docs.astro.build) - Learn about all of Astro's features and how to use them.
+- [Astro Discord](https://astro.build/chat) - Join the Astro community on Discord.
