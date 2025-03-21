@@ -10,14 +10,21 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^8.1.2",
-    "@tailwindcss/vite": "^4.0.14",
+    "@tabler/icons": "^3.31.0",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/vite": "^4.0.15",
     "astro": "^5.5.3",
-    "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1",
-    "tailwindcss": "^4.0.14",
+    "tailwind-variants": "^1.0.0",
+    "tailwindcss": "^4.0.15",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16"
+    "@tailwindcss/typography": "^0.5.16",
+    "globals": "^16.0.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-tailwindcss": "^0.6.11"
   }
 }

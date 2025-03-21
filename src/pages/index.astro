@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
+import { Button } from "@/components/starwind/button";
 
 const books = await getCollection("books");
 export const prerender = true;
@@ -11,12 +12,9 @@ export const prerender = true;
     <div class="mb-16 flex w-full flex-col items-center">
       <h1 class="text-center text-5xl font-bold">Coleccion de Libros</h1>
       <p>By Astro 5, Daniel Dussan</p>
-      <a
-        class="rounded bg-black px-4 py-2 font-bold text-white hover:bg-white hover:text-black transition duration-300 mt-4"
-        href="/countries"
-      >
+      <Button class="mt-4" variant="default" href="/countries">
         Ver Paises
-      </a>
+      </Button>
     </div>
     <section aria-label="Libros para programadores">
       <div class="mx-auto max-w-screen-xl px-4">

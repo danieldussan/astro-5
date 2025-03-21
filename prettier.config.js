@@ -5,5 +5,9 @@ export default {
   trailingComma: "all",
   printWidth: 80,
   tabWidth: 2,
-  // plugins: ["prettier-plugin-tailwindcss", "prettier-plugin-organize-imports"],
+  plugins: [
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-astro",
+  ],
 };
