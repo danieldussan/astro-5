@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const countries = await getCollection("countries");
+---
+
+<Layout title="Paises">
+  <main>
+    <div class="mb-16 flex w-full flex-col items-center">
+      <a
+        href="/"
+        class="mb-2 block text-center opacity-70 transition hover:scale-110 hover:underline"
+      >
+        Volver Atras</a
+      >
+      <h1 class="font-bold text-4xl">Numero De Paises</h1>
+      <p class="font-semibold text-xl mb-3">{countries.length}</p>
+      <p>Esto es una collecion de Astro 5, desde una API</p>
+    </div>
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      {
+        countries
+          .sort((a, b) => a.data.name.localeCompare(b.data.name))
+          .map((country) => {
+            const { data } = country;
+            return <li>{data.name}</li>;
+          })
+      }
+    </ul>
+  </main>
+</Layout>

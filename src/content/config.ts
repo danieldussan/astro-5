@@ -1,4 +1,5 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
+import type { Country } from "@/lib/types/countries";
 
 const books = defineCollection({
   schema: z.object({
@@ -11,7 +12,22 @@ const books = defineCollection({
       spain: z.string().url(),
       usa: z.string().url(),
     }),
-  })
-})
+  }),
+});
 
-export const collections = { books };
+const countries = defineCollection({
+  loader: async () => {
+    const response = await fetch("https://restcountries.com/v3.1/all");
+    const data = await response.json();
+    return data.map((country: Country) => ({
+      id: country.cca3,
+      name: country.name.common,
+    }));
+  },
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+  }),
+});
+
+export const collections = { books, countries };
