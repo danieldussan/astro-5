@@ -1,38 +1,44 @@
 name: Deploy
-on: [push]
+on:
+  push:
+    branches: main
+  pull_request:
+    branches: main
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+
     permissions:
       id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
-    env:
-      SHOW_BUY_BUTTON: ${{ secrets.SHOW_BUY_BUTTON }}
-      SCORE_API_ENDPOINT: ${{ secrets.SCORE_API_ENDPOINT }}
 
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
 
-      - name: Install Bun
-        run: curl -fsSL https://bun.sh/install | bash
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
 
-      - name: Add Bun to PATH
-        run: echo "$HOME/.bun/bin" >> $GITHUB_PATH
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
 
-      # Not using npm? Change `npm ci` to `yarn install` or `pnpm i`
-      - name: Install dependencies
-        run: bun install
+      - name: Install step
+        run: "npm install"
 
-      # Not using npm? Change `npm run build` to `yarn build` or `pnpm run build`
-      - name: Build Astro
-        run: bun run build
+      - name: Build step
+        run: "npm run build"
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: astro-5
-          entrypoint: dist/server/entry.mjs
-          token: ${{ secrets.DENO_DEPLOY_TOKEN }}
+          project: "astro-5"
+          entrypoint: "server/entry.mjs"
+          root: "dist"
+          
+          
