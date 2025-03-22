@@ -35,3 +35,4 @@ jobs:
         with:
           project: astro-5
           entrypoint: dist/server/entry.mjs
+          token: ${{ secrets.DENO_DEPLOY_TOKEN }}
