@@ -1,3 +1,8 @@
+export type Cocktail = {
+  strDrink: string;
+  strDrinkThumb: string;
+  idDrink: string;
+};
 export type Country = {
   name: {
     common: string;

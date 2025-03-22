@@ -1,0 +1,59 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const cocktails = await getCollection("cocktails");
+  return cocktails.map((cocktail) => ({
+    params: {
+      id: cocktail.id,
+    },
+    props: {
+      cocktail,
+    },
+  }));
+}
+
+const { cocktail } = Astro.props;
+export const prerender = true;
+---
+
+<Layout title={`${cocktail.data.name} - Cocktails`}>
+  <h1 class="text-center font-bold text-5xl mb-16">Coctel</h1>
+  <div class="flex gap-12">
+    <aside class="flex flex-col items-center gap-y-4">
+      <a
+        href="/cocktails"
+        class="mb-2 block text-center opacity-70 transition hover:scale-110 hover:underline"
+      >
+        Volver Atras</a
+      >
+      <Image
+        src={cocktail.data.image}
+        alt={cocktail.data.name}
+        width={100}
+        height={100}
+        class="h-auto w-80 rounded"
+        decoding="async"
+      />
+    </aside>
+    <main>
+      <h3 class="mb-6 text-4xl font-bold text-center">{cocktail.data.name}</h3>
+      <p class="prose prose-invert">
+        Los cócteles son bebidas mixtas, generalmente alcohólicas, preparadas
+        con una combinación de licores, zumos, jarabes y otros ingredientes. Su
+        historia es rica y variada, con recetas que se han transmitido a través
+        de generaciones y que han evolucionado con el tiempo. Desde los clásicos
+        como el Mojito o el Margarita hasta creaciones más modernas y
+        experimentales, los cócteles ofrecen una amplia gama de sabores y
+        experiencias para el paladar.
+      </p>
+      <p class="prose prose-invert">
+        La preparación de un cóctel requiere precisión y conocimiento de las
+        proporciones de cada ingrediente, así como de las técnicas de mezclado y
+        presentación.
+      </p>
+    </main>
+  </div>
+</Layout>
