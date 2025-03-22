@@ -2,7 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 // @ts-check
 import { defineConfig, envField } from "astro/config";
 
-import vercel from "@astrojs/vercel";
+import deno from "@deno/astro-adapter";
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,5 +32,5 @@ export default defineConfig({
     },
   },
 
-  adapter: vercel(),
+  adapter: deno(),
 });
