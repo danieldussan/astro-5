@@ -10,6 +10,10 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
 
+    env:
+      SHOW_BUY_BUTTON: ${{ secrets.SHOW_BUY_BUTTON }}
+      SCORE_API_ENDPOINT: ${{ secrets.SCORE_API_ENDPOINT }}
+
     permissions:
       id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
@@ -40,5 +44,3 @@ jobs:
           project: "astro-5"
           entrypoint: "server/entry.mjs"
           root: "dist"
-          
-          
